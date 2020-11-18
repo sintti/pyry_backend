@@ -1,0 +1,11 @@
+post http://localhost:3001/api/clients
+Content-Type: application/json
+Authorization: bearer eyJhbGciOiJIUI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3RpbWllcyIsImlkIjoiNWZhYmIwODlkNTI4M2MyM2RjMTJiNWEzIiwiaWF0IjoxNjA1MDkzMjc0fQ.SHvtp2QpWf26rDp80ooIvr2AewCqXEgxI_JnU7jTPSQ
+
+{
+  "name": "Token Testi",
+  "address": "Testikuja 1",
+  "phone": "123456789",
+  "email": "testi@testi.com",
+  "userId": "5fabb089d5283c23dc12b5a3"
+}

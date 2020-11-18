@@ -1,0 +1,2 @@
+DELETE http://localhost:3001/api/clients/5fab00c31e7721305808bbb9
+Content-Type: application/json
