@@ -7,6 +7,10 @@ const userSchema = mongoose.Schema({
     unique: true
   },
   name: String,
+  company: String,
+  address: String,
+  email: String,
+  phone: String,
   passwordHash: String,
   clients: [
     {
