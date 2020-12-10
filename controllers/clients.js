@@ -1,6 +1,6 @@
 const clientsRouter = require('express').Router()
 const jwt = require('jsonwebtoken')
-const utils = require('./utils/functions')
+const utils = require('./utils/utils')
 const Client = require('../models/client')
 const User = require('../models/user')
 

@@ -1,6 +1,6 @@
 const workRouter = require('express').Router()
 const jwt = require('jsonwebtoken')
-const utils = require('./utils/functions')
+const utils = require('./utils/utils')
 const Work = require('../models/work')
 const User = require('../models/user')
 

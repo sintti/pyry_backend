@@ -37,7 +37,7 @@ usersRouter.get('/', async (request, response) => {
 usersRouter.get('/:id', async (req, res) => {
   try {
     const user = await User.findById(req.params.id)
-    res,json(user)
+    res.json(user)
   } catch (e) {
     res.status(400).send(e.message)
   }
