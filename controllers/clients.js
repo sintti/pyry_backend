@@ -63,13 +63,6 @@ clientsRouter.post('/', async (request, response) => {
 })
 
 clientsRouter.delete('/:id', async (request, response) => {
-  const token = utils.getTokenFrom(request)
-  const decodedToken = jwt.verify(token, process.env.TOKEN_KEY)
-  if (!token || !decodedToken.id) {
-    return response.status(401).json({
-      error: 'token missing or invalid'
-    })
-  }
     await Client.findByIdAndRemove(request.params.id)
     response.status(204).end()
 })
