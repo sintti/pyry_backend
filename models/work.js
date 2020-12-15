@@ -5,14 +5,18 @@ const workSchema = new mongoose.Schema({
   hours: Number,
   trip: Number,
   date: Date,
-  // client: {
-  //   type: mongoose.Schema.Types.ObjectId,
-  //   ref: 'Client'
-  // },
+  client: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Client'
+  },
   client: String,
   user: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User'
+  },
+  work: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Work'
   }
 })
 

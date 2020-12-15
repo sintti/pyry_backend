@@ -10,10 +10,12 @@ const clientSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User'
   },
-  work: {
-    type: mongoose.Schema.Types.ObjectId,
-    red: 'Work'
-  }
+  work: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      red: 'Work'
+    }
+  ]
 })
 
 clientSchema.set('toJSON', {

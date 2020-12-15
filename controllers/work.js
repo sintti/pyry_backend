@@ -3,6 +3,7 @@ const jwt = require('jsonwebtoken')
 const utils = require('./utils/utils')
 const Work = require('../models/work')
 const User = require('../models/user')
+const Client = require('../models/client')
 
 workRouter.get('/', async (request, response) => {
   const work = await Work
@@ -29,21 +30,23 @@ workRouter.post('/', async (request, response) => {
       error: 'token missing or invalid'
     })
   }
-  
+
   const user = await User.findById(decodedToken.id)
-  // const client = await Client.findOne({ name: body.client })
+  const client = await Client.findOne({ name: body.client })
   
   const work = new Work({
     hours: body.hours,
     trip: body.trip,
     date: body.date,
-    client: body.client,
+    client: client._id,
     user: user._id
   })
   
   const savedWork = await work.save()
-  // client.work = client.work.concat(savedWork._id)
-  // await client.save()
+  console.log('client: ', client)
+  console.log('savedWork: ', savedWork)
+  client.work = client.work.concat(savedWork._id)
+  await client.save()
   response.json(savedWork.toJSON())   
 })
 

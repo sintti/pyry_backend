@@ -53,6 +53,7 @@ clientsRouter.post('/', async (request, response) => {
     address: body.address,
     phone: body.phone,
     email: body.email,
+    work: [],
     user: user._id
   })
   
