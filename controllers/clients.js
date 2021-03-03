@@ -12,7 +12,6 @@ clientsRouter.get('/', async (request, response) => {
       error: 'token missing or invalid'
     })
   }
-  console.log(decodedToken.id)
   const clients = await Client
     .find({ user: decodedToken.id })
     .populate('user', { username: 1, name: 1 })

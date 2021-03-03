@@ -9,14 +9,9 @@ const workSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Client'
   },
-  client: String,
   user: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User'
-  },
-  work: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Work'
   }
 })
 
