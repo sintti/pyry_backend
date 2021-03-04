@@ -11,11 +11,7 @@ usersRouter.post('/', async (request, response) => {
   
   const user = new User({
     username: body.username,
-    name: body.name,
-    company: body.company,
-    address: body.address,
     email: body.email,
-    phone: body.phone,
     passwordHash
   })
   
@@ -23,15 +19,19 @@ usersRouter.post('/', async (request, response) => {
     const savedUser = await user.save()
     response.json(savedUser)
   } catch (e) {
-    response.status(400).send(e.message)
+    response.status(400).send(`Rekisteröitymisessä tapahtui virhe.`)
   }
 })
 
 usersRouter.get('/', async (request, response) => {
-  const users = await User
+  try {
+    const users = await User
     .find({})
     .populate('clients', {name: 1, address: 1, phone: 1, email: 1})
-  response.json(users.map(u => u.toJSON()))
+    response.json(users.map(u => u.toJSON()))
+  } catch (error) {
+    res.status(400).send('Virhe haettaessa käyttäjätietoja.')
+  }
 })
 
 usersRouter.get('/:id', async (req, res) => {
@@ -39,7 +39,7 @@ usersRouter.get('/:id', async (req, res) => {
     const user = await User.findById(req.params.id)
     res.json(user)
   } catch (e) {
-    res.status(400).send(e.message)
+    res.status(400).send('Virhe haettaessa käyttäjätietoja.')
   }
 })
 
