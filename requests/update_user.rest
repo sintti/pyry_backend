@@ -1,0 +1,10 @@
+POST http://localhost:3001/api/users/5fabb089d5283c23dc12b5a3 HTTP/1.1
+Content-Type: application/json
+
+{
+  "id": "5fabb089d5283c23dc12b5a3",
+  "name": "Roope Rankka",
+  "address": "Ankkalinnantie 1",
+  "company": "Rankat Ankat Oy",
+  "phone": "111222333"
+}

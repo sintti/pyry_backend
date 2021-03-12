@@ -2,24 +2,50 @@ const bcrypt = require('bcrypt')
 const usersRouter = require('express').Router()
 const User = require('../models/user')
 
+// Create user
 usersRouter.post('/', async (request, response) => {
-  const body = request.body
-  console.log('body: ', body)
-  
-  const saltRounds = 10
-  const passwordHash = await bcrypt.hash(body.password, saltRounds)
-  
-  const user = new User({
-    username: body.username,
-    email: body.email,
-    passwordHash
-  })
-  
   try {
+    const body = request.body
+  
+    const saltRounds = 10
+    const passwordHash = await bcrypt.hash(body.password, saltRounds)
+    
+    const user = new User({
+      username: body.username,
+      email: body.email,
+      passwordHash
+    })
+    
     const savedUser = await user.save()
     response.json(savedUser)
   } catch (e) {
     response.status(400).send(`Rekisteröitymisessä tapahtui virhe.`)
+  }
+})
+
+// Update user info
+usersRouter.post('/:id', async (request, response) => {
+  try {
+    const body = request.body
+    
+    const userToUpdate = await User.findById(body.id)
+    
+    const updatedUser = {
+      ...userToUpdate,
+      name: body.name,
+      address: body.address,
+      phone: body.phone,
+      company: body.company
+    }
+    
+    console.log('töttöröö: ', updatedUser)
+    
+    const savedUser = await updatedUser.save()
+    console.log(savedUser)
+    response.json(savedUser)
+    
+  } catch (error) {
+    response.status(400).send('Käyttäjätietoja päivittäessä tapahtui virhe.')
   }
 })
 

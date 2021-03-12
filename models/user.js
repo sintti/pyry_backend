@@ -9,8 +9,14 @@ const userSchema = mongoose.Schema({
   name: String,
   company: String,
   address: String,
-  email: String,
-  phone: String,
+  email: {
+    type: String,
+    unique: true
+  },
+  phone: {
+    type: String,
+    unique: true
+  },
   passwordHash: String,
   clients: [
     {
