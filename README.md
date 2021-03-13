@@ -4,7 +4,7 @@ Tämä on Helsingin yliopiston Fullstack Open 2020 -kurssin harjoitustyönä teh
 
 Varsinaisen sovelluksen löydät toiminnassa osoitteesta: https://pyry-app.azurewebsites.net/
 
-Harjoitustyön työaikakirjanpito löytyy osoitteesta: LINKKI
+Harjoitustyön työaikakirjanpito löytyy osoitteesta: https://github.com/sintti/fso_project_app/blob/main/kirjanpito.md
 
 ## Ohjeet
 
