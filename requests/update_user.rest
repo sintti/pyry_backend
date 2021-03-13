@@ -1,10 +1,12 @@
 POST http://localhost:3001/api/users/5fabb089d5283c23dc12b5a3 HTTP/1.1
 Content-Type: application/json
+Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3RpbWllcyIsImlkIjoiNWZhYmIwODlkNTI4M2MyM2RjMTJiNWEzIiwiaWF0IjoxNjE1NjE4NDU1fQ.lRQCxH9PwXek0AyrHrK0sU-Oj1eQXy1mgSi78ZGZ004"
 
 {
   "id": "5fabb089d5283c23dc12b5a3",
-  "name": "Roope Rankka",
-  "address": "Ankkalinnantie 1",
-  "company": "Rankat Ankat Oy",
-  "phone": "111222333"
+  "name": "Kikki Hiiri2",
+  "address": "Hiirenkolo 12",
+  "company": "Superhiiret2",
+  "phone": "12345567772",
+  "yTunnus": "12341234-652"
 }

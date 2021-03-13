@@ -17,6 +17,10 @@ const userSchema = mongoose.Schema({
     type: String,
     unique: true
   },
+  yTunnus: {
+    type: String,
+    unique: true
+  },
   passwordHash: String,
   clients: [
     {

@@ -28,24 +28,19 @@ usersRouter.post('/:id', async (request, response) => {
   try {
     const body = request.body
     
-    const userToUpdate = await User.findById(body.id)
-    
-    const updatedUser = {
-      ...userToUpdate,
+    const newUser = await User.findByIdAndUpdate(body.id, {
       name: body.name,
       address: body.address,
       phone: body.phone,
-      company: body.company
-    }
+      company: body.company,
+      yTunnus: body.yTunnus
+    })
     
-    console.log('töttöröö: ', updatedUser)
-    
-    const savedUser = await updatedUser.save()
-    console.log(savedUser)
-    response.json(savedUser)
+    console.log('user information updated succesfully: ', { newUser })
+
     
   } catch (error) {
-    response.status(400).send('Käyttäjätietoja päivittäessä tapahtui virhe.')
+    response.status(400).send(`Virhe päivitettäessä käyttäjätietoja: ${error.message}`)
   }
 })
 
@@ -56,7 +51,7 @@ usersRouter.get('/', async (request, response) => {
     .populate('clients', {name: 1, address: 1, phone: 1, email: 1})
     response.json(users.map(u => u.toJSON()))
   } catch (error) {
-    res.status(400).send('Virhe haettaessa käyttäjätietoja.')
+    res.status(400).send(`Virhe haettaessa käyttäjätietoja: ${error.message}`)
   }
 })
 
@@ -65,7 +60,7 @@ usersRouter.get('/:id', async (req, res) => {
     const user = await User.findById(req.params.id)
     res.json(user)
   } catch (e) {
-    res.status(400).send('Virhe haettaessa käyttäjätietoja.')
+    res.status(400).send(`Virhe haettaessa käyttäjätietoja: ${error.message}`)
   }
 })
 
